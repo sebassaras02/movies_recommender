@@ -2,6 +2,7 @@ import pinecone
 from langchain.vectorstores import Pinecone
 from langchain.embeddings import OpenAIEmbeddings
 import os
+import streamlit as st
 
 pinecone.init(api_key=os.getenv("PINECONE_API_KEY"), environment=os.getenv("PINECONE_ENV"))
 
@@ -16,10 +17,10 @@ def create_retriever():
     Returns:
         vector_store: Pinecone vector store object with the OpenAI embeddings.
     """
-    pinecone.init(api_key=os.getenv("PINECONE_API_KEY"), environment=os.getenv("PINECONE_ENV"))
+    pinecone.init(api_key=st.secrets["PINECONE_API_KEY"], environment=st.secrets["PINECONE_ENV"])
 
     # Load the embeddings
-    embedding = OpenAIEmbeddings(api_key = os.getenv("OPENAI_API_KEY"))
+    embedding = OpenAIEmbeddings(api_key = st.secrets["OPENAI_API_KEY"])
 
     # Create a Pinecone vector store
     vector_store = Pinecone.from_existing_index(index_name="movies", embedding=embedding, namespace="platzi")
