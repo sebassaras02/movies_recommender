@@ -19,7 +19,7 @@ with st.sidebar:
     st.markdown('https://www.linkedin.com/in/sebastiansarasti/')
     st.markdown('https://github.com/sebassaras02')
 
-df = pd.read_csv('../data/books.csv')
+df = pd.read_csv('books.csv')
 
 categories = list(set(df["categories"]))
 
