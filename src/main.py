@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 from utils.similarity_search import create_retriever, search_similar_books
 from utils.visualization import create_df_visualization
+from pathlib import Path
+
 
 
 st.title('Movie Recommender System')
@@ -19,7 +21,7 @@ with st.sidebar:
     st.markdown('https://www.linkedin.com/in/sebastiansarasti/')
     st.markdown('https://github.com/sebassaras02')
 
-df = pd.read_csv('books.csv')
+df = pd.read_csv( Path(__file__).parents[1] / + 'books.csv')
 
 categories = list(set(df["categories"]))
 
